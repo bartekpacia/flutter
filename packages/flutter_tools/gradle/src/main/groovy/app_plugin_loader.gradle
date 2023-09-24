@@ -2,7 +2,7 @@ import groovy.json.JsonSlurper
 import org.gradle.api.Plugin
 import org.gradle.api.initialization.Settings
 
-apply plugin: FlutterAppPluginLoaderPlugin
+// apply plugin: FlutterAppPluginLoaderPlugin
 
 class FlutterAppPluginLoaderPlugin implements Plugin<Settings> {
     // This string must match _kFlutterPluginsHasNativeBuildKey defined in

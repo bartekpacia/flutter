@@ -4,7 +4,9 @@
 
 plugins {
     `java-gradle-plugin`
-    `groovy`
+    groovy
+    id("org.jetbrains.kotlin.jvm") version "1.9.10"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.10"
 }
 
 
@@ -20,7 +22,7 @@ gradlePlugin {
         }
         create("flutterAppPluginLoaderPlugin") {
             id = "dev.flutter.flutter-plugin-loader"
-            implementationClass = "FlutterAppPluginLoaderPlugin"
+            implementationClass = "FlutterAppPluginLoaderPluginKTS"
         }
     }
 }
@@ -31,4 +33,5 @@ dependencies {
     //  * AGP version constants in packages/flutter_tools/lib/src/android/gradle_utils.dart
     //  * AGP version in buildscript block in packages/flutter_tools/gradle/src/main/flutter.groovy
     compileOnly("com.android.tools.build:gradle:7.3.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 }

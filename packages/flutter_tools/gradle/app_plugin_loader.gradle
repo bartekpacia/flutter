@@ -5,5 +5,25 @@
 // This file exists solely for the compatibility with projects that have
 // not migrated to the declarative apply of the Flutter App Plugin Loader Gradle Plugin.
 
+// Failure to apply this plugin will result in the following build failure:
+//* What went wrong:
+//A problem occurred evaluating root project 'android'.
+//> A problem occurred configuring project ':app'.
+//   > Cannot invoke method afterEvaluate() on null object
+
+buildscript {
+    println("app_plugin_loader buildscript evaluated!")
+
+//    def pathToThisDirectory = buildscript.sourceFile.parentFile
+//    apply from: "$pathToThisDirectory/src/main/groovy/app_plugin_loader.gradle", to: settings
+}
+
+println("app_plugin_loader evaluated!")
+
+includeBuild(buildscript.sourceFile.parentFile)
+
 def pathToThisDirectory = buildscript.sourceFile.parentFile
-apply from: "$pathToThisDirectory/src/main/groovy/app_plugin_loader.groovy"
+// apply from: "$pathToThisDirectory/src/main/groovy/app_plugin_loader.gradle"
+apply from: "$pathToThisDirectory/src/main/groovy/FlutterAppPluginLoaderPlugin.kt"
+//apply plugin: FlutterAppPluginLoaderPlugin
+//apply plugin: "dev.flutter.flutter-plugin-loader"
